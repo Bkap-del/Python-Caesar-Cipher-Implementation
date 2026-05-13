@@ -2,7 +2,7 @@ import string
 
 def Caesar_Cipher():
     #prompt user for text and key to be shifted by
-    text = list(input("Enter your text to be shifted via Casear Cipher (pls no spaces rn): "))
+    text = list(input("Enter your text to be shifted via Casear Cipher: "))
     shift_key = int(input("Enter your shift key: "))
     cipher_text = []
 
@@ -10,7 +10,9 @@ def Caesar_Cipher():
     lower_alph = list(string.ascii_lowercase)
 
     for letter in text:
-        if letter.isupper():
+        if not letter.isalpha():
+            cipher_text.append(letter)
+        elif letter.isupper():
             index = upper_alph.index(letter)
             index =  (index+shift_key) % len(upper_alph)
             cipher_text.append(upper_alph[index])
