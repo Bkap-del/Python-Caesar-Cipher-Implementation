@@ -1,9 +1,8 @@
 import string
 
-def Caesar_Cipher():
-    #prompt user for text and key to be shifted by
-    text = list(input("Enter your text to be shifted via Casear Cipher: "))
-    shift_key = int(input("Enter your shift key: "))
+def Caesar_Cipher(text, shift_key, mode = 'enctpyt'):
+    if mode == 'decrypt':
+        shift_key = -shift_key
     cipher_text = []
 
     upper_alph = list(string.ascii_uppercase)
@@ -20,6 +19,9 @@ def Caesar_Cipher():
             index = lower_alph.index(letter)
             index =  (index+shift_key) % len(lower_alph)
             cipher_text.append(lower_alph[index])
-    print ("".join(cipher_text))
+    return ("".join(cipher_text))
 
-Caesar_Cipher()
+secret = Caesar_Cipher("L-i-v-i-n", 4, 'encrypt')
+print(f"The cipher text is: {secret}")
+original = Caesar_Cipher(secret, 4, 'decrypt')
+print(f"The original text was: {original}")
